@@ -153,3 +153,7 @@ cython_debug/
 .vscode
 .gitattributes
 .DS_Store
+embeddings/docstore.json
+embeddings/graph_store.json
+embeddings/index_store.json
+embeddings/vector_store.json

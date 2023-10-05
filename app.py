@@ -5,6 +5,7 @@ import openai
 import os
 from llama_index.embeddings import OpenAIEmbedding
 from config_utils import get_api_key_from_config
+from llama_index.memory import ChatMemoryBuffer
 
 # Setting up the API key
 api_key = get_api_key_from_config()
@@ -21,7 +22,7 @@ llm = OpenAI(model="gpt-4", temperature=0.01)
 @st.cache(show_spinner=False, allow_output_mutation=True)
 def load_data(persist_dir):
     with st.spinner(text="Loading saved embeddings"):
-        service_context = ServiceContext.from_defaults(embed_model=embed_model)
+        service_context = ServiceContext.from_defaults(llm=llm, embed_model=embed_model)
         essay_index = load_index_from_storage(
             StorageContext.from_defaults(persist_dir=persist_dir),
             service_context=service_context,
