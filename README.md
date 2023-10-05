@@ -36,14 +36,14 @@ When chatting with EmbedPDF, the chat will first attempt to find relevant conten
    pip install -r requirements.txt
    ```
 
-4. Store your OpenAI API key in a `config.txt` file in the format: `OPENAI_API_KEY=your_openai_api_key_here`. Ensure `config.txt` is added to `.gitignore` to avoid accidentally sharing your API key.
+4. Store your OpenAI API key in a `config.txt` file in the format: `OPENAI_API_KEY=your_openai_api_key_here`. 
 
 5. Put your desired PDFs in a targeted folder.
 
 6. Generate embeddings for your PDFs:
 
    ```
-   python3 create_embeds.py ./pdfs ./embeddings
+   python3 create_embeds.py [path_to_pdfs] [path_to_embeddings]
    ```
 
 7. To chat with your embedded PDFs, run:
