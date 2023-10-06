@@ -42,7 +42,20 @@ else:
 
 
 if "chat_engine" not in st.session_state.keys():  # Initialize the chat engine
-    st.session_state.chat_engine = index.as_chat_engine(chat_mode="react", verbose=True)
+    memory = ChatMemoryBuffer.from_defaults(token_limit=2000)
+    st.session_state.chat_engine = index.as_chat_engine(
+        chat_mode="react",
+        verbose=True,
+        memory=memory,
+        system_prompt=(
+            "You are a chatbot with access to specific embedded documents. "
+            "Use these documents, in combination with your expansive knowledge, to answer the user's questions. "
+            "If the embedded documents don't contain relevant information for a particular query, state that explicitly "
+            "and then provide an answer based on your own knowledge.\n"
+            "Relevant documentation content from embedded documents: [Retrieved Document Snippet]\n"
+            "User's question: [User's Current Question]"
+        ),
+    )
 
 
 if "messages" not in st.session_state.keys():  # Initialize the chat messages history
