@@ -46,7 +46,7 @@ When chatting with EmbedPDF, the chat will first attempt to find relevant conten
    python3 create_embeds.py [path_to_pdfs] [path_to_embeddings]
    ```
 
-7. To chat with your embedded PDFs, run:
+7. To chat with your embedded PDFs, run (specify the location of the saved embeddings in the web UI):
 
    ```
    streamlit run app.py
