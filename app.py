@@ -85,3 +85,10 @@ def init():
         initial_sidebar_state="auto",
         menu_items=None,
     )
+
+
+def reset_conversation():
+    st.session_state.chat_engine.reset()
+
+
+st.button("Reset Chat", on_click=reset_conversation)
