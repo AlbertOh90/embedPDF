@@ -4,7 +4,7 @@ EmbedPDF is for those who don't have access to a GPU and can't perform fine-tuni
 
 ## Note
 
-Once you create embeddings with the create_embeds.py script, you won't have to repeat this unless you change the PDFs in your collection. This helps save on API costs. When starting the Streamlit chat, just point to the directory of the PDFs you want. This way, you can interact with specific documents without redoing the embeddings or looking through everything. 
+Once you create embeddings with the create_embeds.py script, you won't have to repeat this unless you change the PDFs in your collection. This helps save on API costs. When starting the Streamlit chat, just point to the directory of the embedding directory you want. You can also change the embedding directory in the middle of the chat.
 
 ## Chat Functionality
 
