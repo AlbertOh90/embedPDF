@@ -54,7 +54,7 @@ if "chat_engine" not in st.session_state.keys():  # Initialize the chat engine
             "and then provide an answer based on your own knowledge.\n"
             "Relevant documentation content from embedded documents: [Retrieved Document Snippet]\n"
             "User's question: [User's Current Question]"
-        ),
+        ),  # system_prompt is not used if the chat_mode is "react"
     )
 
 
