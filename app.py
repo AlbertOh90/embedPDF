@@ -36,7 +36,9 @@ def load_data(persist_dir):
 
 
 # Get directory input from user
-persist_dir = st.text_input("Enter the directory for embeddings:", "./embeddings/")
+persist_dir = st.sidebar.text_input(
+    "Enter the directory for embeddings:", "./embeddings/"
+)
 
 # Load data if the persist_dir is different from the stored one or if it doesn't exist in session_state yet
 if "persist_dir" not in st.session_state or st.session_state.persist_dir != persist_dir:
