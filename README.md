@@ -6,7 +6,7 @@ EmbedPDF is for those who don't have access to a GPU and can't perform fine-tuni
 
 Once you create embeddings with the create_embeds.py script, you won't have to repeat this unless you change the PDFs in your collection. This helps save on API costs. When starting the Streamlit chat, just point to the directory of the embedding directory you want. You can also change the embedding directory in the middle of the chat.
 
-Can also change the query API from `GPT-4` to `gpt-3.5-turbo` in the app.py file to save the API call cost.
+Can also change the query API from `GPT-4` to `gpt-3.5-turbo` in the sidebar to save the API call cost.
 
 ## Chat Functionality
 
