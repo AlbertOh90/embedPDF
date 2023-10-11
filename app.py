@@ -15,7 +15,12 @@ os.environ["OPENAI_API_KEY"] = api_key
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
 embed_model = OpenAIEmbedding(embed_batch_size=10)
-llm = OpenAI(model="gpt-4", temperature=0.01)
+model = st.sidebar.selectbox(
+    "Choose the model",
+    ("gpt-3.5-turbo", "gpt-4"),
+    help="Select the model you want to use for the chat application.",
+)
+llm = OpenAI(model, temperature=0.01)
 
 
 # Load data function with caching
