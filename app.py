@@ -6,6 +6,8 @@ import os
 from llama_index.embeddings import OpenAIEmbedding
 from config_utils import get_api_key_from_config
 from llama_index.memory import ChatMemoryBuffer
+from tempfile import TemporaryDirectory
+from create_embeds import pdf_to_index
 
 # Setting up the API key
 api_key = get_api_key_from_config()
@@ -95,6 +97,32 @@ if st.session_state.messages[-1]["role"] != "assistant":
             st.write(response.response)
             message = {"role": "assistant", "content": response.response}
             st.session_state.messages.append(message)  # Add response to message history
+
+# Create a temporary directory
+with TemporaryDirectory() as tmpdir:
+    # Create a file uploader in the sidebar
+    uploaded_files = st.sidebar.file_uploader(
+        "Drag your PDFs here", type=["pdf"], accept_multiple_files=True
+    )
+
+    # If the user has uploaded some files
+    if uploaded_files:
+        # Save each file to the temporary directory
+        for uploaded_file in uploaded_files:
+            with open(os.path.join(tmpdir, uploaded_file.name), "wb") as f:
+                f.write(uploaded_file.getbuffer())
+
+        # Get the directory to save the embeddings
+        persist_dir = st.sidebar.text_input(
+            "Enter the directory to save the embeddings:"
+        )
+
+        # If the user has entered a directory
+        if persist_dir:
+            # Create and save the embeddings
+            if st.sidebar.button("Create and save embeddings"):
+                pdf_to_index(tmpdir, persist_dir)
+                st.sidebar.success("Embeddings created successfully!")
 
 
 def init():
